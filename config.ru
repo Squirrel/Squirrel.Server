@@ -1,5 +1,5 @@
 require 'bundler'
-Bundler.require
+Bundler.require(:default, ENV['RACK_ENV'].to_sym)
 
 $LOAD_PATH << File.dirname(__FILE__)
 require 'app/app'
