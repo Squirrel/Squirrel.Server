@@ -8,5 +8,6 @@ gem "mustache", "~> 0.99.4", :require => "mustache/sinatra"
 gem "activerecord", "~> 4.0.0", :require => "active_record"
 
 group :development do
+  gem "dotenv", "~> 0.9.0"
   gem "debugger", "~> 1.6.2"
 end

@@ -1,7 +1,6 @@
-require 'bundler'
-Bundler.require(:default, ENV['RACK_ENV'].to_sym)
-
 $LOAD_PATH << File.dirname(__FILE__)
+
+require 'config/boot'
 require 'app/app'
 
 map '/admin' do
