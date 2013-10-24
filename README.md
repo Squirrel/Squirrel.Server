@@ -1,6 +1,6 @@
 # Squirrel Server
 
-This rack application implements the server site component for
+This rack application implements the server side component for
 [Squirrel.Mac](https://github.com/Squirrel/Squirrel.Mac). It is Heroku
 compatible and should get you started setting up your own Squirrel server.
 
