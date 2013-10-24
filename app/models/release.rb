@@ -1,5 +1,5 @@
 module Squirrel
-  class Release
+  class Release < ActiveRecord::Base
 
       def self.latest_release
         nil
