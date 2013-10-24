@@ -10,6 +10,8 @@ module Squirrel
       :views => File.join(File.dirname(__FILE__), "views"),
     }
 
+    enable :method_override
+
     get '/releases' do
       mustache :releases, :layout => 'releases'
     end
@@ -21,6 +23,12 @@ module Squirrel
         :pub_date => Time.now,
         :notes => params[:notes],
         :url => params[:url])
+
+      redirect '/admin/releases'
+    end
+
+    delete '/releases/:id' do
+      Release.find_by_id(params[:id]).destroy!
 
       redirect '/admin/releases'
     end

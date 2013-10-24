@@ -13,6 +13,10 @@
     <p>Published {{pub_date}}</p>
     <p>{{notes}}</p>
     <a href="{{url}}">Download</a>
+    <form action="/admin/releases/{{id}}" method="POST">
+      <input type="text" name="_method" hidden="true" value="DELETE"/>
+      <input type="submit" value="Delete Release"/>
+    </form>
   {{/latest_release}}
   {{^latest_release}}
     <p>No release yet.</p>
