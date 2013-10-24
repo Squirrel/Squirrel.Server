@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My App Releases</title>
+</head>
+
+<body>
+<div>
+  {{#latest_release}}
+    <h3>{{name}} - {{version}}</h3>
+    <p>{{pub_date}}</p>
+    <p>{{notes}}</p>
+    <a href="{{url}}">Download</a>
+  {{/latest_release}}
+
+  {{^latest_release}}
+    <p>No release yet.</p>
+  {{latest_release}}
+</div>
+
+<div>
+  <form action="/admin/latest" method="POST">
+    <input type="text" name="name" placeholder="Name"/>
+    <input type="text" name="version" placeholder="Number"/>
+    <input type="textarea" name="notes" placeholder="Notes"/>
+    <input type="text" name="url" placeholder="URL"/>
+    <input type="submit"/>
+  </form>
+</div>
+</body>
+
+</html>
