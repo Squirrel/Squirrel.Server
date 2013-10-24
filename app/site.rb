@@ -12,7 +12,7 @@ module Squirrel
 
     get '/latest' do
       @latest_release = Release.latest_release
-      mustache :releases
+      mustache :releases, :layout => 'releases'
     end
 
     post '/latest' do
