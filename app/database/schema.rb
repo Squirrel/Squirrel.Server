@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20131024134120) do
 
   create_table "releases", force: true do |t|
     t.string   "name"
-    t.string   "version",  null: false
+    t.integer  "version",  null: false
     t.datetime "pub_date"
     t.string   "notes"
     t.string   "url",      null: false
