@@ -20,7 +20,7 @@ then
   do
         if [[ "${char}" == $'\0' ]]
         then
-      echo -e "\n"
+            echo -e "\n"
             break
         fi
         prompt='*'
@@ -28,6 +28,11 @@ then
   done
 
   echo "ADMIN_PASSWORD=${password}" >> .env
+fi
+
+if [ -z "${DATABASE_URL}" -a ! -z "${BOXEN_POSTGRESQL_URL}" ]
+then
+	echo "DATABASE_URL=${BOXEN_POSTGRESQL_URL}squirrel_development" >> .env
 fi
 
 script/bootstrap
