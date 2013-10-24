@@ -10,11 +10,11 @@ module Squirrel
       :views => File.join(File.dirname(__FILE__), "views"),
     }
 
-    get '/latest' do
+    get '/releases' do
       mustache :releases, :layout => 'releases'
     end
 
-    post '/latest' do
+    post '/releases' do
       Release.create!(
         :name => params[:name],
         :version => params[:version],
@@ -22,7 +22,7 @@ module Squirrel
         :notes => params[:notes],
         :url => params[:url])
 
-      redirect '/admin/latest'
+      redirect '/admin/releases'
     end
 
   end

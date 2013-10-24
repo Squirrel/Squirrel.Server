@@ -1,7 +1,7 @@
 module Squirrel
   class Api < Sinatra::Base
 
-    get '/latest' do
+    get '/releases/latest' do
       release = Release.latest_release
 
       if !release.nil? && release.version == params[:version]
