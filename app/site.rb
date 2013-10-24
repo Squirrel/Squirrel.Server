@@ -16,7 +16,13 @@ module Squirrel
     end
 
     post '/latest' do
-
+      release = Release.new(
+        :name => params[:name],
+        :version => params[:version],
+        :pub_date => Time.now,
+        :notes => params[:notes],
+        :url => params[:url])
+      release.save!
 
       redirect '/admin/latest'
     end
