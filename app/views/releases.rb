@@ -3,7 +3,7 @@ module Squirrel
     class Releases < Mustache
 
       def latest_release
-        @latest_release
+        Release.latest_release
       end
 
     end

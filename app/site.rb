@@ -11,18 +11,16 @@ module Squirrel
     }
 
     get '/latest' do
-      @latest_release = Release.latest_release
       mustache :releases, :layout => 'releases'
     end
 
     post '/latest' do
-      release = Release.new(
+      Release.create!(
         :name => params[:name],
         :version => params[:version],
         :pub_date => Time.now,
         :notes => params[:notes],
         :url => params[:url])
-      release.save!
 
       redirect '/admin/latest'
     end
