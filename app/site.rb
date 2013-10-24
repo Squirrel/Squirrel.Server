@@ -18,7 +18,7 @@ module Squirrel
     post '/latest' do
 
 
-      redirect '/latest'
+      redirect '/admin/latest'
     end
 
   end
