@@ -16,5 +16,6 @@ environment, push the code and open the admin interface in your browser!
 Once you've deployed your sever, you need to configure a client to query it for
 updates.
 
-The update resource is `/latest`, so set your `SQRLUpdater.updateRequest` to
-`[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://my-server.herokuapp.com/latest"]]`.
+The update resource is `/releases/latest`, so set your
+`SQRLUpdater.updateRequest` to
+`[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://my-server.herokuapp.com/releases/latest"]]`.
