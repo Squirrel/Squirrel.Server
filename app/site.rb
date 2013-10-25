@@ -1,5 +1,3 @@
-require 'mustache'
-
 module Squirrel
   class Site < Sinatra::Base
 
