@@ -4,4 +4,4 @@ require 'config/boot'
 
 load 'app/database/tasks.rake'
 
-load 'tests/tasks.rake'
+load 'test/tasks.rake'
