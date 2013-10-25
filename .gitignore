@@ -3,3 +3,5 @@ vendor/gems
 bin
 .env
 .ruby-version
+tmp
+db
