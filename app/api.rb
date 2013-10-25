@@ -1,6 +1,10 @@
 module Squirrel
   class Api < Sinatra::Base
 
+    get '/' do
+      redirect '/admin/releases'
+    end
+
     get '/releases/latest' do
       release = Release.latest_release
 
