@@ -4,7 +4,7 @@ module Squirrel
     get '/releases/latest' do
       release = Release.latest_release
 
-      if !release.nil? && release.version == params[:version]
+      if release.nil? || release.version == params['version'].to_i
         return [ 204, {}, "" ]
       end
 
