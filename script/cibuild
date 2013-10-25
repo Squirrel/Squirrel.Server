@@ -1,0 +1,23 @@
+#!/bin/sh
+# Run the tests in CI.
+
+set -e
+
+cd $(dirname "$0")/..
+
+export RACK_ROOT=$(pwd)
+export RACK_ENV="test"
+export PATH="$RACK_ROOT/bin:$PATH"
+export RBENV_VERSION="2.0.0-github"
+
+test -d "/usr/share/rbenv/shims" && {
+  export PATH=/usr/share/rbenv/shims:$PATH
+}
+
+echo "Bootstrapping..."
+date "+%H:%M:%S"
+script/bootstrap --no-quiet --without development:staging:production
+
+echo "Running tests..."
+date "+%H:%M:%S"
+bundle exec rake test
