@@ -58,5 +58,26 @@ module Squirrel
       assert_equal 204, last_response.status
     end
 
+    def test_expected_types
+      get '/releases/latest'
+
+      body = JSON.parse(last_response.body)
+
+      url = body['url']
+      assert url.is_a? String
+
+      if name = body['name']
+        assert name.is_a? String
+      end
+
+      if notes = body['notes']
+        assert notes.is_a? String
+      end
+
+      if pub_date = body['pub_date']
+        assert pub_date.is_a? String
+      end
+    end
+
   end
 end
