@@ -2,32 +2,32 @@
 
 if [ -f .env ]
 then
-  source .env
+	source .env
 fi
 
 if [ -z "${ADMIN_USERNAME}" ]
 then
-  read -p "Choose a username to protect the admin site with: "
-  echo -e "Username: \"${REPLY}\""
+	read -p "Choose a username to protect the admin site with: "
+	echo -e "Username: \"${REPLY}\""
 
-  echo "ADMIN_USERNAME=${REPLY}" >> .env
+	echo "ADMIN_USERNAME=${REPLY}" >> .env
 fi
 
 if [ -z "${ADMIN_PASSWORD}" ]
 then
-  prompt="Choose a password to protect the admin site with: "
-  while IFS= read -p "${prompt}" -r -s -n 1 char
-  do
-        if [[ "${char}" == $'\0' ]]
-        then
-            echo -e "\n"
-            break
-        fi
-        prompt='*'
-        password+="$char"
-  done
+	prompt="Choose a password to protect the admin site with: "
+	while IFS= read -p "${prompt}" -r -s -n 1 char
+	do
+		if [[ "${char}" == $'\0' ]]
+		then
+			echo -e "\n"
+			break
+		fi
+		prompt='*'
+		password+="$char"
+	done
 
-  echo "ADMIN_PASSWORD=${password}" >> .env
+	echo "ADMIN_PASSWORD=${password}" >> .env
 fi
 
 if [ -z "${DATABASE_URL}" -a ! -z "${BOXEN_POSTGRESQL_URL}" ]
