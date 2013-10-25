@@ -30,14 +30,4 @@ then
 	echo "ADMIN_PASSWORD=${password}" >> .env
 fi
 
-if [ -z "${DATABASE_URL}" -a ! -z "${BOXEN_POSTGRESQL_URL}" ]
-then
-	default_database_url="${BOXEN_POSTGRESQL_URL}squirrel_development"
-
-	read -p "Choose a database URL (press return for default of \"${default_database_url}\"): "
-	database_url="${REPLY:-${default_database_url}}"
-
-	echo "DATABASE_URL=${database_url}" >> .env
-fi
-
 script/bootstrap
