@@ -1,7 +1,5 @@
 $LOAD_PATH << File.dirname(__FILE__)
 
-ENV['RACK_ENV'] ||= 'development'
-
 require 'config/boot'
 
 namespace :db do
