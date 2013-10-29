@@ -4,6 +4,11 @@ require 'config/boot'
 
 require 'model/release'
 
+if %w(development production).include?(ENV['RACK_ENV'])
+  releases_path = File.join(ENV['RACK_ROOT'], 'db', 'releases.json')
+  Squirrel::Release.load(releases_path) if File.exists?(releases_path)
+end
+
 module Squirrel
   class Api < Sinatra::Base
 
