@@ -1,3 +1,5 @@
+require 'config/boot'
+
 require 'rake/testtask'
 
 Rake::TestTask.new :test do |t|

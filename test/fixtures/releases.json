@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Test Release",
+    "version": 100,
+    "pub_date": "2013-10-29T12:35:28+00:00",
+    "notes": "\u2022 Feature\u000a\u2022 Bug fix\u000a\u2022 Improvement",
+    "url": "https://github.com/mac/latest"
+  }
+]

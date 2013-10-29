@@ -1,6 +1,7 @@
-require 'test/unit'
-
 require 'config/boot'
+
+require 'test/unit'
+require 'model/release'
 
 module Squirrel
   class ApiTest < Test::Unit::TestCase
@@ -13,17 +14,12 @@ module Squirrel
     end
 
     def setup
-      @release = Release.create!(
-        :name => "Test Release",
-        :version => 100,
-        :pub_date => Time.now,
-        :notes => "• Feature\n• Bug fix\n• Improvement",
-        :url => "https://github.com/mac/latest"
-      )
+      Release.load(File.join(File.dirname(__FILE__), 'fixtures', 'releases.json')).first
+      @release = Release.latest_release
     end
 
     def teardown
-      @release.destroy!
+      Release.unload
     end
 
     def test_release_latest
