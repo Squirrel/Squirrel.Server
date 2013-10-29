@@ -4,4 +4,3 @@ bin
 .env
 .ruby-version
 tmp
-db
