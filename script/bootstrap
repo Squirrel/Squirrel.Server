@@ -1,5 +1,3 @@
 #!/bin/bash
 
 bundle install --path vendor/gems --binstubs
-
-bundle exec rake db:create db:migrate

@@ -4,21 +4,10 @@ ruby "2.0.0"
 
 gem "sinatra", "~> 1.4.4", :require => "sinatra/base"
 gem "rack", "~> 1.5.2"
-gem "mustache", "~> 0.99.4", :require => "mustache/sinatra"
-gem "activerecord", "~> 4.0.0", :require => "active_record"
 gem "rake", "~> 10.1.0"
 
-group :production do
-  gem "pg", "~> 0.17.0"
-end
-
 group :development, :test do
-  gem "sqlite3", "~> 1.3.8"
   gem "debugger", "~> 1.6.2"
-end
-
-group :development do
-  gem "dotenv", "~> 0.9.0"
 end
 
 group :test do

@@ -6,10 +6,9 @@ compatible and should get you started setting up your own Squirrel server.
 
 # Deploying the server
 
-1. Run `script/setup` and follow the prompts.
+1. Run `script/bootstrap`.
 1. Install the [Herkou Toolbelt](https://toolbelt.heroku.com).
-1. Run `script/heroku-deploy` to create the app on Heroku, configure the
-environment, push the code and open the admin interface in your browser!
+1. Run `script/heroku-deploy` to create the app on Heroku and push the code.
 
 # Configuring your client
 
@@ -20,7 +19,6 @@ The update resource is `/releases/latest`, so set your
 `SQRLUpdater.updateRequest` to
 `[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://my-server.herokuapp.com/releases/latest"]]`.
 
-# Developing locally
+# Running locally
 
-Run `script/setup` if you haven't already, then `script/server` to start. Open
-`http://localhost:9393/admin/releases` to add a release.
+Run `script/server` to start.

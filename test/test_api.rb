@@ -1,7 +1,6 @@
 require 'test/unit'
 
 require 'config/boot'
-require 'app/app'
 
 module Squirrel
   class ApiTest < Test::Unit::TestCase

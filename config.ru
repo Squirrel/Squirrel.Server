@@ -1,16 +1,13 @@
 $LOAD_PATH << File.dirname(__FILE__)
 
 require 'config/boot'
-require 'app/app'
 
-map '/admin' do
-  admin_username, admin_password = ENV['ADMIN_USERNAME'], ENV['ADMIN_PASSWORD']
-  throw ArgumentError, "ADMIN_USERNAME and ADMIN_PASSWORD must be provided" unless admin_username && admin_password
-  use Rack::Auth::Basic do |username, password|
-    username == admin_username && password == admin_password
+get '/releases/latest' do
+  release = Release.latest_release
+
+  if release.nil? || release.version == params['version'].to_i
+    return [ 204, {}, "" ]
   end
 
-  run Squirrel::Site
+  [ 200, {}, release.to_json ]
 end
-
-run Squirrel::Api

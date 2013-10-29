@@ -3,24 +3,8 @@
 if [ -z "$(git remote -v | grep git@heroku)" ]
 then
   heroku apps:create
-
-  # Add Postgres dev
-  heroku addons:add heroku-postgresql
-
-  # Promote the new database to DATABASE_URL
-  database_variable=$(heroku config --shell | grep HEROKU_POSTGRESQL | cut -f 1 -d =)
-  heroku pg:promote "${database_variable}"
-
-  # Ensure the database is available before continuing
-  heroku pg:wait
-
-  # Duplicate the .env variables from script/setup into the config
-  IFS=$'\n' dotenv_vars=($(cat .env))
-  heroku config:set ${dotenv_vars[@]}
 fi
 
 git push heroku master
-
-heroku run rake db:migrate
 
 heroku open
