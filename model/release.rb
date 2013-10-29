@@ -5,6 +5,8 @@ module Squirrel
 
       include Comparable
 
+      @@releases = []
+
       def self.load(file)
         @@releases = JSON.parse(File.read(file)).map do |json_release|
           new(json_release)
@@ -12,7 +14,7 @@ module Squirrel
       end
 
       def self.unload
-        @@releases = nil
+        @@releases.clear
       end
 
       def self.all
