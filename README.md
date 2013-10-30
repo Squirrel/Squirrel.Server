@@ -25,9 +25,11 @@ The update resource is `/releases/latest`, configure your client
 `SQRLUpdater.updateRequest`:
 
 ```objc
-NSString *bundleVersion = [NSBundle.mainBundle objectForInfoDictionaryKey:(id)kCFBundleVersionKey];
+NSString *bundleVersion = NSBundle.mainBundle.sqrl_bundleVersion;
+
 NSString *URLString = [NSString stringWithFormat:@"http://my-server.herokuapp.com/releases/latest?version=%@", [bundleVersion stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet]];
 NSURL *URL = [NSURL URLWithString:URLString];
+
 self.updater = [[SQRLUpdater alloc] initWithUpdateRequest:[NSURLRequest requestWithURL:URL]];
 ```
 
