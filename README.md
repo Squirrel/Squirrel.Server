@@ -41,7 +41,7 @@ NSString *bundleVersion = NSBundle.mainBundle.sqrl_bundleVersion;
 // Set this to @"localhost:9393" to use the local server
 NSString *host = @"my-server.herokuapp.com";
 
-NSString *URLString = [NSString stringWithFormat:@"http://%@/releases/latest?version=%@", [bundleVersion stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet]];
+NSString *URLString = [NSString stringWithFormat:@"http://%@/releases/latest?version=%@", host, [bundleVersion stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet]];
 NSURL *URL = [NSURL URLWithString:URLString];
 
 self.updater = [[SQRLUpdater alloc] initWithUpdateRequest:[NSURLRequest requestWithURL:URL]];
