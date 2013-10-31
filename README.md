@@ -36,13 +36,22 @@ The update resource is `/releases/latest`, configure your client
 `SQRLUpdater.updateRequest`:
 
 ```objc
+NSURLComponents *components = [[NSURLComponents alloc] init];
+
+components.scheme = @"http";
+
+BOOL useLocalServer = NO;
+if (useLocalServer) {
+  components.host = @"localhost";
+  components.port = @(9393);
+} else {
+  components.host = @"my-server.herokuapp.com";
+}
+
+components.path = @"/releases/latest";
+
 NSString *bundleVersion = NSBundle.mainBundle.sqrl_bundleVersion;
+components.query = [[NSString stringWithFormat:@"version=%@", bundleVersion] stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet]
 
-// Set this to @"localhost:9393" to use the local server
-NSString *host = @"my-server.herokuapp.com";
-
-NSString *URLString = [NSString stringWithFormat:@"http://%@/releases/latest?version=%@", host, [bundleVersion stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet]];
-NSURL *URL = [NSURL URLWithString:URLString];
-
-self.updater = [[SQRLUpdater alloc] initWithUpdateRequest:[NSURLRequest requestWithURL:URL]];
+self.updater = [[SQRLUpdater alloc] initWithUpdateRequest:components.URL];
 ```
