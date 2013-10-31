@@ -21,7 +21,7 @@ update URL host to `localhost:9393` for testing, see
 
 # Deploying the server
 
-1. Install the [Herkou Toolbelt](https://toolbelt.heroku.com).
+1. Install the [Heroku Toolbelt](https://toolbelt.heroku.com).
 1. Run `script/heroku-deploy` to create the app on Heroku and push the code.
 
 # Configuring your client
