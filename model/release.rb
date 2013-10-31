@@ -11,6 +11,7 @@ module Squirrel
         @@releases = JSON.parse(File.read(file)).map do |json_release|
           new(json_release)
         end
+        @@releases.sort!
       end
 
       def self.unload
@@ -22,7 +23,7 @@ module Squirrel
       end
 
       def self.latest_release
-        all.sort.last
+        all.last
       end
 
       def initialize(attributes)
