@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ -z "$(git remote -v | grep git@heroku)" ]
+then
+  heroku apps:create
+fi
+
+git push heroku master
+
+heroku open
