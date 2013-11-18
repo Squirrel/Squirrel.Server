@@ -1,4 +1,5 @@
 require 'json'
+require 'time'
 
 module Squirrel
     class Release
@@ -26,28 +27,27 @@ module Squirrel
         all.last
       end
 
+      def self.hash_reader(key, &block)
+        define_method key do
+          value = @attributes[key.to_s]
+          value = block.call(value) if block
+          value
+        end
+      end
+
+      hash_reader :name
+      hash_reader :version
+
+      hash_reader :pub_date do |value|
+        DateTime.iso8601(value)
+      end
+
+      hash_reader :notes
+
+      hash_reader :url
+
       def initialize(attributes)
         @attributes = attributes
-      end
-
-      def name
-        @attributes['name']
-      end
-
-      def version
-        @attributes['version']
-      end
-
-      def pub_date
-        DateTime.iso8601(@attributes['pub_date'])
-      end
-
-      def notes
-        @attributes['notes']
-      end
-
-      def url
-        @attributes['url']
       end
 
       def to_json
